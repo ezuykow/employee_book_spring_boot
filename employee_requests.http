@@ -1,0 +1,47 @@
+### All employees
+GET http://localhost:8080/employees
+
+### Add employee
+POST http://localhost:8080/employees
+Content-Type: application/json
+
+{
+  "firstName" : "Ivan",
+  "lastName" : "Ivanov",
+  "salary" : 23000,
+  "department" : 3
+}
+
+### Add second employee
+POST http://localhost:8080/employees
+Content-Type: application/json
+
+{
+  "firstName" : "Katya",
+  "lastName" : "Ivanova",
+  "salary" : 30000,
+  "department" : 1
+}
+
+### Sum of salaries
+GET http://localhost:8080/employees/salaries/sum
+
+### Employee with min salary
+GET http://localhost:8080/employees/min-salary-employee
+
+### Employee with max salary
+GET http://localhost:8080/employees/max-salary-employee
+
+### Employees with salary which more than average
+GET http://localhost:8080/employees/salary-more-average
+
+### Add non-valid employee
+POST http://localhost:8080/employees
+Content-Type: application/json
+
+{
+  "firstName" : "",
+  "lastName" : "Ivanova",
+  "salary" : 30000,
+  "department" : 1
+}
