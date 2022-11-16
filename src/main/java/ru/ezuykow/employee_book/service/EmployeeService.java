@@ -54,15 +54,28 @@ public class EmployeeService {
     }
 
     private Employee createEmployeeFromRequest(EmployeeRequest employeeRequest) {
-        if (StringUtils.isEmpty(employeeRequest.getFirstName())
-                || StringUtils.isEmpty(employeeRequest.getLastName())) {
-            throw new IllegalArgumentException();
-        }
+        validateEmployeeData(employeeRequest);
         return new Employee(++COUNT,
                 employeeRequest.getFirstName(),
                 employeeRequest.getLastName(),
                 employeeRequest.getSalary(),
                 employeeRequest.getDepartment());
+    }
+
+    private void validateEmployeeData(EmployeeRequest employeeRequest) {
+        final String firstName = employeeRequest.getFirstName();
+        final String lastName = employeeRequest.getLastName();
+        checkName(firstName, lastName);
+        employeeRequest.setFirstName(StringUtils.capitalize(firstName));
+        employeeRequest.setLastName(StringUtils.capitalize(lastName));
+    }
+
+    private void checkName(String firstName, String lastName) {
+        if (StringUtils.isEmpty(firstName) || StringUtils.isEmpty(lastName)
+                || !firstName.chars().allMatch(Character::isLetter)
+                || !lastName.chars().allMatch(Character::isLetter)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int averageSalary() {
