@@ -1,11 +1,11 @@
-package ru.ezuykow.employee_book.controller;
+package ru.ezuykow.employee_book.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.ezuykow.employee_book.model.Employee;
-import ru.ezuykow.employee_book.record.EmployeeRequest;
-import ru.ezuykow.employee_book.service.EmployeeService;
+import ru.ezuykow.employee_book.models.Employee;
+import ru.ezuykow.employee_book.dto.EmployeeRequest;
+import ru.ezuykow.employee_book.services.EmployeeService;
 
 import java.util.Collection;
 
@@ -48,11 +48,5 @@ public class EmployeeController {
     @GetMapping("/salary-more-average")
     public Collection<Employee> getEmployeesWithSalaryMoreAverage() {
         return employeeService.getEmployeesWithSalaryMoreAverage();
-    }
-
-    @ExceptionHandler(Throwable.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handle(IllegalArgumentException e) {
-        return "Employee`s data must be valid";
     }
 }

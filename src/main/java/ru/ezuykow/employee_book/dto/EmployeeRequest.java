@@ -1,4 +1,4 @@
-package ru.ezuykow.employee_book.record;
+package ru.ezuykow.employee_book.dto;
 
 public class EmployeeRequest {
 

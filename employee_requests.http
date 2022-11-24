@@ -45,3 +45,9 @@ Content-Type: application/json
   "salary" : 30000,
   "department" : 1
 }
+
+###Add a null employee
+POST http://localhost:8080/employees
+
+###Get departments
+GET http://localhost:8080/departments
